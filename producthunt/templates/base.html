@@ -14,6 +14,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+
+
   body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
@@ -45,7 +47,7 @@
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css'%}" >
   <!-- Favicons -->
   <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
   <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -82,7 +84,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
       <div class="container">
-        <img src="{% static 'logo.png' %}"
+
+          <a class="navbar-brand" href=" {% url 'home' %}"><img src="{% static 'logo.png' %}"</a>
       <a class="navbar-brand" href=" {% url 'home' %}">Product Hunt</a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +95,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
-
+          <a class="nav-link" href="{% url 'create' %}"><span class="oi oi-plus"></span></a>
           <li class="nav-item">
             <a class="nav-link" href="javascript:{ document.getElementById('logout').submit() }" onclick="">logout</a>
             <form id="logout" action="{% url 'logout' %}" method="POST">
@@ -103,14 +106,21 @@
           </li>
 
           {% else %}
+<div class="container">
+  <li class="nav-item">
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}" >Signup</a>
-          </li>
+    </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
-          </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'signup' %}" >Signup</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'login' %}">Login</a>
+  </li>
+</div>
+
 
           {% endif %}
 
